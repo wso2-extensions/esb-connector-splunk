@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+   WSO2 Inc. licenses this file to you under the Apache License,
+   Version 2.0 (the "License"); you may not use this file except
+   in compliance with the License.
+   You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied. See the License for the
+   specific language governing permissions and limitations
+   under the License.
+-->
+<component name="splunkConfigurations" type="synapse/template">
+    <subComponents>
+        <component name="createConfigFile">
+            <file>createConfigFile.xml</file>
+            <description>Create a configuration file.</description>
+        </component>
+        <component name="deleteStanza">
+            <file>deleteStanza.xml</file>
+            <description>Delete {stanza} in {file} configuration file.</description>
+        </component>
+        <component name="getAppConfigFiles">
+            <file>getAppConfigFiles.xml</file>
+            <description>List all the configuration files available for the app.</description>
+        </component>
+        <component name="getStanza">
+            <file>getStanza.xml</file>
+            <description>Returns all the stanza names in the named configuration file.</description>
+        </component>
+        <component name="addStanza">
+            <file>addStanza.xml</file>
+            <description>Add stanzas to the {file} configuration file.</description>
+        </component>
+        <component name="updateStanza">
+            <file>updateStanza.xml</file>
+            <description>Update or add property to {stanza} in {file} configuration file.</description>
+        </component>
+    </subComponents>
+</component>

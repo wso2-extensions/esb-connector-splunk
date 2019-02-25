@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+   WSO2 Inc. licenses this file to you under the Apache License,
+   Version 2.0 (the "License"); you may not use this file except
+   in compliance with the License.
+   You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied. See the License for the
+   specific language governing permissions and limitations
+   under the License.
+-->
+<template xmlns="http://ws.apache.org/ns/synapse" name="moveSavedSearch">
+    <parameter name="appName" description="Name of the default app"/>
+    <parameter name="appUserName" description="Users that have access to the resource"/>
+    <parameter name="searchName" description="Name for the search"/>
+    <parameter name="appNameToMove" description="The app where the saved search is going to move"/>
+    <sequence>
+        <property name="uri.var.appName" expression="$func:appName"/>
+        <property name="appUserName" expression="$func:appUserName"/>
+        <property name="uri.var.searchName" expression="$func:searchName"/>
+        <property name="appNameToMove" expression="$func:appNameToMove"/>
+        <payloadFactory media-type="json">
+            <format>
+                {
+                "user":"$1",
+                "app":"$2"
+                }
+            </format>
+            <args>
+                <arg evaluator="xml" expression="get-property('appUserName')" literal="false"
+                     xmlns="http://org.apache.synapse/xsd"/>
+                <arg evaluator="xml" expression="get-property('appNameToMove')" literal="false"
+                     xmlns="http://org.apache.synapse/xsd"/>
+            </args>
+        </payloadFactory>
+        <property name="messageType" scope="axis2" type="STRING" value="application/x-www-form-urlencoded"/>
+        <call>
+            <endpoint>
+                <http method="POST"
+                      uri-template="https://{uri.var.hostname}:{uri.var.port}/servicesNS/nobody/{uri.var.appName}/saved/searches/{uri.var.searchName}/move"/>
+            </endpoint>
+        </call>
+    </sequence>
+</template>

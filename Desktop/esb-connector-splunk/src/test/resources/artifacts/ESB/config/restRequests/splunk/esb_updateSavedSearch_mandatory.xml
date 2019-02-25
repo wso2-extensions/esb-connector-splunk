@@ -1,0 +1,10 @@
+<updateSavedSearch>
+    <username>%s(username)</username>
+    <password>%s(password)</password>
+    <hostname>%s(hostname)</hostname>
+    <port>%s(port)</port>
+    <appName>%s(appName)</appName>
+    <appUserName>%s(appUserName)</appUserName>
+    <searchName>%s(searchName)</searchName>
+    <searchQuery>%s(searchQuery1)</searchQuery>
+</updateSavedSearch>

@@ -1,0 +1,13 @@
+<createSearchJob>
+    <username>%s(username)</username>
+    <password>%s(password)</password>
+    <hostname>%s(hostname)</hostname>
+    <port>%s(port)</port>
+    <searchQuery></searchQuery>
+    <adhocSearchLevel></adhocSearchLevel>
+    <searchId></searchId>
+    <maxCount></maxCount>
+    <requiredFields></requiredFields>
+    <bucketStatus></bucketStatus>
+    <searchMode></searchMode>
+</createSearchJob>
