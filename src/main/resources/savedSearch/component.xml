@@ -17,11 +17,11 @@
    under the License.
 -->
 <component name="savedSearch" type="synapse/template" >
-    <subComponents> 
-		<component name="createSavedSearch" >
-	    		<file>createSavedSearch.xml</file>
-	    		<description>Create a saved search for the user that is available from the app</description>
-		</component>			
+    <subComponents>
+        <component name="createSavedSearch" >
+            <file>createSavedSearch.xml</file>
+            <description>Create a saved search for the user that is available from the app</description>
+        </component>
         <component name="accessSavedSearch">
             <file>accessSavedSearch.xml</file>
             <description>Access saved search configurations that you have permission to view</description>

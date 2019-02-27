@@ -24,7 +24,7 @@
         </component>
         <component name="accessSearchJob">
             <file>accessSearchJob.xml</file>
-            <description>Access the information of the {search_id} search job</description>
+            <description>Access the information of the {search_id} search job.</description>
         </component>
         <component name="getSearchResults">
             <file>getSearchResults.xml</file>

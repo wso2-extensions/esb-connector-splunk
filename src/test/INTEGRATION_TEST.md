@@ -1,4 +1,4 @@
-﻿## Integration Tests: WSO2 ESB Splunk Connector for Splunk Enterprise API Version v4.
+﻿## Integration Tests: WSO2 EI Splunk Connector for Splunk Enterprise API Version v4.
 
 ### Pre-requisites:
 

@@ -30,13 +30,13 @@
              var dataFields = mc.getProperty('dataFields');
              var urlQuery = '';
 
-             if (dataFields != "null" && dataFields != ""){
-                    urlQuery += dataFields;
-                }
-             if (urlQuery != null && urlQuery != ""){
-                    urlQuery = '?' + urlQuery;
-                }
-                mc.setProperty('uri.var.urlQuery', urlQuery);
+             if (dataFields != "null" && dataFields != "") {
+                urlQuery += dataFields;
+             }
+             if (urlQuery != null && urlQuery != "") {
+                urlQuery = '?' + urlQuery;
+             }
+             mc.setProperty('uri.var.urlQuery', urlQuery);
             ]]>
         </script>
         <property name="messageType" scope="axis2" type="STRING" value="application/x-www-form-urlencoded"/>
@@ -48,4 +48,3 @@
         </call>
     </sequence>
 </template>
-

@@ -17,12 +17,11 @@
    under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="createConfigFile">
-
     <parameter name="appName" description="Name of the app to list all configuration files"/>
     <parameter name="configFileName" description="Name of the configuration file"/>
     <sequence>
         <property name="uri.var.appName" expression="$func:appName"/>
-        <property name="uri.var.configFileName" expression="$func:configFileName"/>
+        <property name="configFileName" expression="$func:configFileName"/>
         <payloadFactory media-type="json">
             <format>
                 {
@@ -30,7 +29,7 @@
                 }
             </format>
             <args>
-                <arg evaluator="xml" expression="get-property('uri.var.configFileName')" literal="false"
+                <arg evaluator="xml" expression="get-property('configFileName')" literal="false"
                      xmlns="http://org.apache.synapse/xsd"/>
             </args>
         </payloadFactory>
@@ -43,4 +42,3 @@
         </call>
     </sequence>
 </template>
-

@@ -24,8 +24,8 @@
     <sequence>
         <property name="uri.var.appName" expression="$func:appName"/>
         <property name="uri.var.appUserName" expression="$func:appUserName"/>
-        <property name="uri.var.searchName" expression="$func:searchName"/>
-        <property name="uri.var.searchQuery" expression="$func:searchQuery"/>
+        <property name="searchName" expression="$func:searchName"/>
+        <property name="searchQuery" expression="$func:searchQuery"/>
         <payloadFactory media-type="json">
             <format>
                 {
@@ -34,9 +34,9 @@
                 }
             </format>
             <args>
-                <arg evaluator="xml" expression="get-property('uri.var.searchName')" literal="false"
+                <arg evaluator="xml" expression="get-property('searchName')" literal="false"
                      xmlns="http://org.apache.synapse/xsd"/>
-                <arg evaluator="xml" expression="get-property('uri.var.searchQuery')" literal="false"
+                <arg evaluator="xml" expression="get-property('searchQuery')" literal="false"
                      xmlns="http://org.apache.synapse/xsd"/>
             </args>
         </payloadFactory>

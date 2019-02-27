@@ -24,19 +24,19 @@
     <sequence>
         <property name="uri.var.appName" expression="$func:appName"/>
         <property name="uri.var.configFileName" expression="$func:configFileName"/>
-        <property name="uri.var.stanzaName" expression="$func:stanzaName"/>
+        <property name="stanzaName" expression="$func:stanzaName"/>
         <property name="uri.var.dataFields" expression="$func:dataFields"/>
         <script language="js"><![CDATA[
              var dataFields = mc.getProperty('dataFields');
              var urlQuery = '';
 
-             if (dataFields != "null" && dataFields != null && dataFields != ""){
-                    urlQuery += dataFields;
-                }
-             if (urlQuery != null && urlQuery != ""){
-                    urlQuery = '?' + urlQuery;
-                }
-                mc.setProperty('uri.var.urlQuery', urlQuery);
+             if (dataFields != "null" && dataFields != null && dataFields != "") {
+                urlQuery += dataFields;
+             }
+             if (urlQuery != null && urlQuery != "") {
+                urlQuery = '?' + urlQuery;
+             }
+             mc.setProperty('uri.var.urlQuery', urlQuery);
             ]]>
         </script>
         <payloadFactory media-type="json">
@@ -46,7 +46,7 @@
                 }
             </format>
             <args>
-                <arg evaluator="xml" expression="$ctx:uri.var.stanzaName" literal="false"
+                <arg evaluator="xml" expression="$ctx:stanzaName" literal="false"
                      xmlns="http://org.apache.synapse/xsd"/>
             </args>
         </payloadFactory>
@@ -59,4 +59,3 @@
         </call>
     </sequence>
 </template>
-

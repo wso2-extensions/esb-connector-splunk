@@ -56,7 +56,6 @@
                     urlParamString = '?' + urlParamString.toString().substring(1);
                 }
                 mc.setProperty('uri.var.urlParamString', urlParamString);
-
             ]]>
         </script>
         <call>

@@ -23,9 +23,9 @@
     <parameter name="appNameToMove" description="The app where the saved search is going to move"/>
     <sequence>
         <property name="uri.var.appName" expression="$func:appName"/>
-        <property name="uri.var.appUserName" expression="$func:appUserName"/>
+        <property name="appUserName" expression="$func:appUserName"/>
         <property name="uri.var.searchName" expression="$func:searchName"/>
-        <property name="uri.var.appNameToMove" expression="$func:appNameToMove"/>
+        <property name="appNameToMove" expression="$func:appNameToMove"/>
         <payloadFactory media-type="json">
             <format>
                 {
@@ -34,9 +34,9 @@
                 }
             </format>
             <args>
-                <arg evaluator="xml" expression="get-property('uri.var.appUserName')" literal="false"
+                <arg evaluator="xml" expression="get-property('appUserName')" literal="false"
                      xmlns="http://org.apache.synapse/xsd"/>
-                <arg evaluator="xml" expression="get-property('uri.var.appNameToMove')" literal="false"
+                <arg evaluator="xml" expression="get-property('appNameToMove')" literal="false"
                      xmlns="http://org.apache.synapse/xsd"/>
             </args>
         </payloadFactory>

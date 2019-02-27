@@ -17,7 +17,6 @@
    under the License.
 -->
 <template xmlns="http://ws.apache.org/ns/synapse" name="deleteStanza">
-
     <parameter name="appName" description="Name of the app to list all configuration files"/>
     <parameter name="configFileName" description="Name of the configuration file"/>
     <parameter name="stanzaName" description="Name of the stanza name to be deleted "/>
@@ -33,4 +32,3 @@
         </call>
     </sequence>
 </template>
-
