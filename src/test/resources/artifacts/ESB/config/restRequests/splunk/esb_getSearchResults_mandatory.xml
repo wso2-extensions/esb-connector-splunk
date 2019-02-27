@@ -1,0 +1,14 @@
+<getSearchResults>
+    <username>%s(username)</username>
+    <password>%s(password)</password>
+    <hostname>%s(hostname)</hostname>
+    <port>%s(port)</port>
+    <searchQuery></searchQuery>
+    <addSummaryToMetadata></addSummaryToMetadata>
+    <searchId>%s(searchId)</searchId>
+    <resultCount></resultCount>
+    <fields></fields>
+    <fieldList></fieldList>
+    <resultOffset></resultOffset>
+    <outputFormat></outputFormat>
+</getSearchResults>

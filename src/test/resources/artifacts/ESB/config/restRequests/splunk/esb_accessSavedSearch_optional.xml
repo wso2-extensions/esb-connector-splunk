@@ -1,0 +1,12 @@
+<accessSavedSearch>
+    <username>%s(username)</username>
+    <password>%s(password)</password>
+    <hostname>%s(hostname)</hostname>
+    <port>%s(port)</port>
+    <appName>%s(appName)</appName>
+    <appUserName>%s(appUserName)</appUserName>
+    <earliestTime>%s(earliestTime)</earliestTime>
+    <latestTime>%s(latestTime)</latestTime>
+    <listDefaultAction>%s(listDefaultAction)</listDefaultAction>
+    <orphanField>%s(orphanField)</orphanField>
+</accessSavedSearch>

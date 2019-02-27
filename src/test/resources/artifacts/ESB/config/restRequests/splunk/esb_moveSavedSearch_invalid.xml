@@ -1,0 +1,10 @@
+<moveSavedSearch>
+    <username>%s(username)</username>
+    <password>%s(password)</password>
+    <hostname>%s(hostname)</hostname>
+    <port>%s(port)</port>
+    <appName>%s(appName)</appName>
+    <appUserName></appUserName>
+    <searchName></searchName>
+    <appNameToMove></appNameToMove>
+</moveSavedSearch>
