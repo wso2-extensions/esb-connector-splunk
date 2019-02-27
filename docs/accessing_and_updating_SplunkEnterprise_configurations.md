@@ -291,4 +291,3 @@ curl http://localhost:8089/services/createConfigFile -H "Content-Type: applicati
 ```
 
 5. Splunk returns HTTP status = 201 (created) with no response body.
-

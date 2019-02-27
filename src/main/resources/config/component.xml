@@ -19,8 +19,8 @@
 <component name="config" type="synapse/template" >
     <subComponents> 
 		<component name="init" >
-	    		<file>init.xml</file>
-	    		<description>Configuration for Splunk</description>
+			<file>init.xml</file>
+			<description>Configuration for Splunk</description>
 		</component>
     </subComponents>    
 </component>

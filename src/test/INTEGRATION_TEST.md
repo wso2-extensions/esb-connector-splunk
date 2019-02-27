@@ -48,7 +48,7 @@
                         "keytool -importcert -file server.pem -keystore {EI_HOME}/repository/resources/security/client-truststore.jks -alias splunk"
         iii) Deploy relevant patches, if applicable.
 
-6.Compress modified EI as wso2ei-6.4.0.zip and copy that zip file in to location ``<CONNECTOR_HOME>/repository/`.
+6.Compress modified EI as wso2ei-6.4.0.zip and copy that zip file in to location `<CONNECTOR_HOME>/repository/`.
 
 7.Follow the below mentioned steps for adding valid certificate to access Splunk API over https
 
@@ -109,4 +109,3 @@
 
  10.Navigate to `{EI_Connector_Home}/` and run the following command.
              `$ mvn clean install -Dskip-tests=false`
-
