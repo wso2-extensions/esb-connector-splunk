@@ -51,4 +51,3 @@ Now that you have connected to Splunk, use the information in the following topi
 * To work with Saved Searches, See [Working with Saved Searches](managing_objects.md)
 * To work with Search job, See [Working with Search Jobs](creating_searches.md)
 * To work with Splunk Enterprise configurations, See [Accessing and updating Splunk Enterprise configurations](accessing_and_updating_SplunkEnterprise_configurations.md)
-
