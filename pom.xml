@@ -26,7 +26,6 @@
     <packaging>jar</packaging>
     <name>WSO2 Carbon - Connector For Splunk</name>
     <url>http://wso2.org</url>
-
     <properties>
         <connector.name>splunk</connector.name>
         <integration.base.version>1.0.4</integration.base.version>
