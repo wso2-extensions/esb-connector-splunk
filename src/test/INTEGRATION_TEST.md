@@ -109,4 +109,3 @@
 
  10.Navigate to `{EI_Connector_Home}/` and run the following command.
              `$ mvn clean install -Dskip-tests=false`
-
