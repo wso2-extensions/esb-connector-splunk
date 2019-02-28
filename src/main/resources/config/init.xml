@@ -28,7 +28,7 @@
         <property name="uri.var.port" expression="$func:port"/>
         <property name="authenticationRawdata"
                   expression="fn:concat(get-property('username'),':',get-property('password'))"/>
-        
+
         <!-- Base64Encoding the username and password -->
         <property name="authorization"
                   expression="fn:concat('Basic ', base64Encode(get-property('authenticationRawdata')))"

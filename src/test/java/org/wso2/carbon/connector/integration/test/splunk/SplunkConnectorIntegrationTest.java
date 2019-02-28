@@ -115,8 +115,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
                 "/" + connectorProperties.getProperty("appName") + "/saved/searches";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "POST",
-                apiRequestHeadersMap, "api_createSavedSearch_invalid.txt",
-                null, true);
+                apiRequestHeadersMap, "api_createSavedSearch_invalid.txt",null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
@@ -162,8 +161,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
                 "/" + connectorProperties.getProperty("appName") + "/saved/searches";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "GET",
-                apiRequestHeadersMap, "api_accessSavedSearch_optional.txt", null,
-                true);
+                apiRequestHeadersMap, "api_accessSavedSearch_optional.txt", null,true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
@@ -436,8 +434,8 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
         connectorProperties.setProperty("searchId", searchId);
         String apiEndpoint = apiUrl + "/services/search/jobs/" + searchId;
 
-        RestResponse<OMElement> apiRestResponse =
-                sendXmlRestRequestHTTPS(apiEndpoint, "GET", apiRequestHeadersMap, null,null, true);
+        RestResponse<OMElement> apiRestResponse =sendXmlRestRequestHTTPS(apiEndpoint, "GET",
+                apiRequestHeadersMap, null,null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 201);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
@@ -740,8 +738,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
         String apiEndpoint = apiUrl + "/servicesNS/nobody//configs/conf-//";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "POST",
-                apiRequestHeadersMap, null, null,
-                true);
+                apiRequestHeadersMap, null, null,true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
