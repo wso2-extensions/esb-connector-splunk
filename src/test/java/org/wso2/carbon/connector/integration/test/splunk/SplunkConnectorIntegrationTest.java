@@ -76,7 +76,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
     /**
      * Positive test case for createSavedSearch with mandatory parameters.
      */
-    @Test(enabled = true,groups = {"wso2.ei"}, description = "splunk {createSavedSearch} integration " +
+    @Test(enabled = true, groups = {"wso2.ei"}, description = "splunk {createSavedSearch} integration " +
             "test with mandatory parameters.")
     public void testCreateSavedSearchMandatory() throws Exception {
 
@@ -115,7 +115,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
                 "/" + connectorProperties.getProperty("appName") + "/saved/searches";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "POST",
-                apiRequestHeadersMap, "api_createSavedSearch_invalid.txt",null, true);
+                apiRequestHeadersMap, "api_createSavedSearch_invalid.txt", null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
@@ -161,7 +161,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
                 "/" + connectorProperties.getProperty("appName") + "/saved/searches";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "GET",
-                apiRequestHeadersMap, "api_accessSavedSearch_optional.txt", null,true);
+                apiRequestHeadersMap, "api_accessSavedSearch_optional.txt", null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
@@ -243,7 +243,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
     /**
      * Positive test case for shareSavedSearch with mandatory parameters
      */
-    @Test(enabled = true,groups = {"wso2.ei"}, description = "splunk {shareSavedSearch} integration " +
+    @Test(enabled = true, groups = {"wso2.ei"}, description = "splunk {shareSavedSearch} integration " +
             "test with mandatory parameters.", dependsOnMethods = {"testCreateSavedSearchMandatory"})
     public void testShareSavedSearchMandatory() throws Exception {
 
@@ -314,7 +314,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
                 connectorProperties.getProperty("appUserName") + "/" + connectorProperties.getProperty("appName")
                 + "/saved/searches//acl";
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "POST",
-                apiRequestHeadersMap,"api_shareSavedSearch_invalid.txt", null,true);
+                apiRequestHeadersMap, "api_shareSavedSearch_invalid.txt", null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(getValueByExpression("//response/messages", eiRestResponse.getBody()),
@@ -337,7 +337,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
                 "nobody/" + connectorProperties.getProperty("appName") + "/saved/searches/"
                 + connectorProperties.getProperty("searchName1");
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "GET",
-                apiRequestHeadersMap,null, null, true);
+                apiRequestHeadersMap, null, null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
@@ -353,13 +353,13 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
         eiRequestHeadersMap.put("Action", "urn:moveSavedSearch");
 
         RestResponse<OMElement> eiRestResponse =
-                sendXmlRestRequest(proxyUrl, "POST", eiRequestHeadersMap,"esb_moveSavedSearch_invalid.xml");
+                sendXmlRestRequest(proxyUrl, "POST", eiRequestHeadersMap, "esb_moveSavedSearch_invalid.xml");
         String apiEndpoint = apiUrl + "/servicesNS/"
                 + connectorProperties.getProperty("appUserName") + "/" + connectorProperties.getProperty("appName")
                 + "/saved/searches//move";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "POST",
-                apiRequestHeadersMap,"api_moveSavedSearch_invalid.txt", null,true);
+                apiRequestHeadersMap, "api_moveSavedSearch_invalid.txt", null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 400);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 400);
@@ -371,7 +371,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
      * Positive test case for deleteSavedSearch with mandatory parameters.
      */
     @Test(enabled = true, groups = {"wso2.ei"}, description = "splunk {deleteSavedSearch} integration test with " +
-            "mandatory parameters.",dependsOnMethods = {"testCreateSavedSearchMandatory",
+            "mandatory parameters.", dependsOnMethods = {"testCreateSavedSearchMandatory",
             "testUpdateSavedSearchMandatory", "testShareSavedSearchMandatory"})
     public void testDeleteSavedSearchMandatory() throws Exception {
 
@@ -434,8 +434,8 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
         connectorProperties.setProperty("searchId", searchId);
         String apiEndpoint = apiUrl + "/services/search/jobs/" + searchId;
 
-        RestResponse<OMElement> apiRestResponse =sendXmlRestRequestHTTPS(apiEndpoint, "GET",
-                apiRequestHeadersMap, null,null, true);
+        RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "GET",
+                apiRequestHeadersMap, null, null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 201);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);
@@ -499,7 +499,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
 
         String apiEndpoint = apiUrl + "/services/search/jobs/" + searchId + "/results";
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "GET",
-                apiRequestHeadersMap, null,null, true);
+                apiRequestHeadersMap, null, null, true);
         //Getting both status codes 200 and 204 randomly when successful.
         String eiStatusCode = Integer.toString(eiRestResponse.getHttpStatusCode());
         String apiStatusCode = Integer.toString(apiRestResponse.getHttpStatusCode());
@@ -511,7 +511,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
     /**
      * Positive test case for getSearchResults with optional parameters.
      */
-    @Test(enabled = true, groups = {"wso2.ei"}, description ="splunk {getSearchResults} integration test with " +
+    @Test(enabled = true, groups = {"wso2.ei"}, description = "splunk {getSearchResults} integration test with " +
             "optional parameters.")
     public void testGetSearchResultsOptional() throws Exception {
 
@@ -523,7 +523,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
         String apiEndpoint = apiUrl + "/services/search/jobs/" + searchId + "/results";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "GET",
-                apiRequestHeadersMap, "api_getSearchResults_optional.txt", null,true);
+                apiRequestHeadersMap, "api_getSearchResults_optional.txt", null, true);
         //Getting both status codes 200 and 204 randomly when successful.
         String eiStatusCode = Integer.toString(eiRestResponse.getHttpStatusCode());
         String apiStatusCode = Integer.toString(apiRestResponse.getHttpStatusCode());
@@ -595,7 +595,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
     /**
      * Positive test case for createConfigFile with mandatory parameters.
      */
-    @Test(enabled = true,groups = {"wso2.ei"}, description = "splunk {createConfigFile} integration test with " +
+    @Test(enabled = true, groups = {"wso2.ei"}, description = "splunk {createConfigFile} integration test with " +
             "mandatory parameters.")
     public void testCreateConfigFileMandatory() throws Exception {
 
@@ -627,7 +627,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
 
         String apiEndpoint = apiUrl + "/servicesNS/nobody//properties";
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "POST",
-                apiRequestHeadersMap, "api_createConfigFile_invalid.txt", null,true);
+                apiRequestHeadersMap, "api_createConfigFile_invalid.txt", null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
@@ -694,7 +694,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
         String apiEndpoint = apiUrl + "/servicesNS/nobody//configs/conf-";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "POST",
-                apiRequestHeadersMap, "api_addStanza_invalid.txt", null,true);
+                apiRequestHeadersMap, "api_addStanza_invalid.txt", null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
@@ -738,7 +738,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
         String apiEndpoint = apiUrl + "/servicesNS/nobody//configs/conf-//";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint, "POST",
-                apiRequestHeadersMap, null, null,true);
+                apiRequestHeadersMap, null, null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
@@ -782,7 +782,7 @@ public class SplunkConnectorIntegrationTest extends ConnectorIntegrationTestBase
         String apiEndpoint = apiUrl + "/servicesNS/nobody//configs/conf-";
 
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequestHTTPS(apiEndpoint,
-                "GET", apiRequestHeadersMap,null, null, true);
+                "GET", apiRequestHeadersMap, null, null, true);
 
         Assert.assertEquals(eiRestResponse.getHttpStatusCode(), 404);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 404);
