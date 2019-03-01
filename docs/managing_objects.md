@@ -52,10 +52,174 @@ Following is a sample request that can be handled by the createSavedSearch opera
   <port>8089</port>
   <appName>splunkApp</appName>
   <appUserName>shevindi</appUserName>
-  <searchName>Mysearch</searchName>
+  <searchName>mysearch</searchName>
   <searchQuery>*</searchQuery>
 </createSavedSearch>
 ```
+
+
+
+**Sample Response**
+
+```xml
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:s="http://dev.splunk.com/ns/rest" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <title>savedsearch</title>
+  <id>https://localhost:8089/servicesNS/shevindi/splunkApp/saved/searches</id>
+  <updated>2018-12-12T21:57:46+05:30</updated>
+  <generator build="be11b2c46e23" version="7.2.1"/>
+  <author>
+    <name>Splunk</name>
+  </author>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_new" rel="create"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_reload" rel="_reload"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_acl" rel="_acl"/>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:itemsPerPage>30</opensearch:itemsPerPage>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <s:messages/>
+  <entry>
+    <title>mysearch</title>
+    <id>https://localhost:8089/servicesNS/shevindi/splunkApp/saved/searches/mysearch7</id>
+    <updated>2018-12-12T21:57:46+05:30</updated>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch" rel="alternate"/>
+    <author>
+      <name>shevindi</name>
+    </author>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch" rel="list"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/_reload" rel="_reload"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch" rel="edit"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch" rel="remove"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/move" rel="move"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/disable" rel="disable"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/dispatch" rel="dispatch"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/embed" rel="embed"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/history" rel="history"/>
+    <!-- opensearch nodes elided for brevity. -->
+    <content type="text/xml">
+      <s:dict>
+        <s:key name="action.email">0</s:key>
+        <s:key name="action.email.auth_password"></s:key>
+        <s:key name="action.email.auth_username"></s:key>
+        <s:key name="action.email.bcc"></s:key>
+        <s:key name="action.email.cc"></s:key>
+        <s:key name="action.email.command"><![CDATA[$action.email.preprocess_results{default=""}$
+          | sendemail "server=$action.email.mailserver{default=localhost}$"
+          "use_ssl=$action.email.use_ssl{default=false}$"
+          "use_tls=$action.email.use_tls{default=false}$" "to=$action.email.to$"
+          "cc=$action.email.cc$" "bcc=$action.email.bcc$" "from=$action.email.from{default=splunk@localhost}$"
+          "subject=$action.email.subject{recurse=yes}$" "format=$action.email.format{default=csv}$"
+          "sssummary=Saved Search [$name$]: $counttype$($results.count$)" "sslink=$results.url$"
+          "ssquery=$search$" "ssname=$name$" "inline=$action.email.inline{default=False}$"
+          "sendresults=$action.email.sendresults{default=False}$" "sendpdf=$action.email.sendpdf{default=False}$"
+          "pdfview=$action.email.pdfview$" "searchid=$search_id$" "graceful=$graceful{default=True}$"
+          maxinputs="$action.email.maxresults{default=10000}$" maxtime="$action.email.maxtime{default=5m}$"]]>
+        </s:key>
+        <s:key name="action.email.format">html</s:key>
+        <s:key name="action.email.from">splunk</s:key>
+        <s:key name="action.email.hostname"></s:key>
+        <s:key name="action.email.inline">0</s:key>
+        <s:key name="action.email.mailserver">localhost</s:key>
+        <s:key name="action.email.maxresults">10000</s:key>
+        <s:key name="action.email.maxtime">5m</s:key>
+        <s:key name="action.email.pdfview"></s:key>
+        <s:key name="action.email.preprocess_results"></s:key>
+        <s:key name="action.email.reportPaperOrientation">portrait</s:key>
+        <s:key name="action.email.reportPaperSize">letter</s:key>
+        <s:key name="action.email.reportServerEnabled">1</s:key>
+        <s:key name="action.email.reportServerURL"></s:key>
+        <s:key name="action.email.sendpdf">0</s:key>
+        <s:key name="action.email.sendresults">0</s:key>
+        <s:key name="action.email.subject">Splunk Alert: $name$</s:key>
+        <s:key name="action.email.to"></s:key>
+        <s:key name="action.email.track_alert">1</s:key>
+        <s:key name="action.email.ttl">86400</s:key>
+        <s:key name="action.email.use_ssl">0</s:key>
+        <s:key name="action.email.use_tls">0</s:key>
+        <s:key name="action.populate_lookup">0</s:key>
+        <s:key name="action.populate_lookup.command">copyresults dest="$action.populate_lookup.dest$"  sid="$search_id$"</s:key>
+        <s:key name="action.populate_lookup.dest"></s:key>
+        <s:key name="action.populate_lookup.hostname"></s:key>
+        <s:key name="action.populate_lookup.maxresults">10000</s:key>
+        <s:key name="action.populate_lookup.maxtime">5m</s:key>
+        <s:key name="action.populate_lookup.track_alert">0</s:key>
+        <s:key name="action.populate_lookup.ttl">120</s:key>
+        <s:key name="action.rss">0</s:key>
+        <s:key name="action.rss.command">createrss "path=$name$.xml" "name=$name$" "link=$results.url$" "descr=Alert trigger:
+          $name$, results.count=$results.count$ " "count=30" "graceful=$graceful{default=1}$" maxtime="$action.rss.maxtime{default=1m}$"
+        </s:key>
+        <s:key name="action.rss.hostname"></s:key>
+        <s:key name="action.rss.maxresults">10000</s:key>
+        <s:key name="action.rss.maxtime">1m</s:key>
+        <s:key name="action.rss.track_alert">0</s:key>
+        <s:key name="action.rss.ttl">86400</s:key>
+        <s:key name="action.script">0</s:key>
+        <s:key name="action.script.command">runshellscript "$action.script.filename$" "$results.count$" "$search$" "$search$" "$name$"
+          "Saved Search [$name$] $counttype$($results.count$)" "$results.url$" "$deprecated_arg$" "$search_id$" "$results.file$"
+          maxtime="$action.script.maxtime{default=5m}$"
+        </s:key>
+        <s:key name="action.script.filename"></s:key>
+        <s:key name="action.script.hostname"></s:key>
+        <s:key name="action.script.maxresults">10000</s:key>
+        <s:key name="action.script.maxtime">5m</s:key>
+        <s:key name="action.script.track_alert">1</s:key>
+        <s:key name="action.script.ttl">600</s:key>
+        <s:key name="action.summary_index">0</s:key>
+        <s:key name="action.summary_index._name">summary</s:key>
+        <s:key name="action.summary_index.command"><![CDATA[summaryindex spool=t uselb=t addtime=t index="$action.summary_index._name{required=yes}$"
+          file="$name$_$#random$.stash_new" name="$name$" marker="$action.summary_index*{format=$KEY=\\\"$VAL\\\",
+          key_regex="action.summary_index.(?!(?:command|inline|maxresults|maxtime|ttl|track_alert|(?:_.*))$)(.*)"}$"]]>
+        </s:key>
+        <s:key name="action.summary_index.hostname"></s:key>
+        <s:key name="action.summary_index.inline">1</s:key>
+        <s:key name="action.summary_index.maxresults">10000</s:key>
+        <s:key name="action.summary_index.maxtime">5m</s:key>
+        <s:key name="action.summary_index.track_alert">0</s:key>
+        <s:key name="action.summary_index.ttl">120</s:key>
+        <s:key name="alert.digest_mode">1</s:key>
+        <s:key name="alert.expires">24h</s:key>
+        <s:key name="alert.severity">3</s:key>
+        <s:key name="alert.suppress"></s:key>
+        <s:key name="alert.suppress.fields"></s:key>
+        <s:key name="alert.suppress.period"></s:key>
+        <s:key name="alert.track">auto</s:key>
+        <s:key name="alert_comparator"></s:key>
+        <s:key name="alert_condition"></s:key>
+        <s:key name="alert_threshold"></s:key>
+        <s:key name="alert_type">always</s:key>
+        <s:key name="cron_schedule"></s:key>
+        <s:key name="description"></s:key>
+        <s:key name="disabled">0</s:key>
+        <s:key name="dispatch.buckets">0</s:key>
+        <s:key name="dispatch.earliest_time"></s:key>
+        <s:key name="dispatch.latest_time"></s:key>
+        <s:key name="dispatch.lookups">1</s:key>
+        <s:key name="dispatch.max_count">500000</s:key>
+        <s:key name="dispatch.max_time">0</s:key>
+        <s:key name="dispatch.reduce_freq">10</s:key>
+        <s:key name="dispatch.rt_backfill">0</s:key>
+        <s:key name="dispatch.spawn_process">1</s:key>
+        <s:key name="dispatch.time_format">%FT%T.%Q%:z</s:key>
+        <s:key name="dispatch.ttl">2p</s:key>
+        <s:key name="displayview"></s:key>
+        <!-- eai:acl elided -->
+        <s:key name="is_scheduled">0</s:key>
+        <s:key name="is_visible">1</s:key>
+        <s:key name="max_concurrent">1</s:key>
+        <s:key name="next_scheduled_time"></s:key>
+        <s:key name="qualifiedSearch">search  index=_internal source=*metrics.log</s:key>
+        <s:key name="realtime_schedule">1</s:key>
+        <s:key name="request.ui_dispatch_app"></s:key>
+        <s:key name="request.ui_dispatch_view"></s:key>
+        <s:key name="restart_on_searchpeer_add">1</s:key>
+        <s:key name="run_on_startup">0</s:key>
+        <s:key name="search">index=_internal source=*metrics.log</s:key>
+        <s:key name="vsid"></s:key>
+      </s:dict>
+    </content>
+  </entry>
+</feed>
+```
+
 
 **Related Splunk documentation**
 http://docs.splunk.com/Documentation/Splunk/7.2.1/RESTREF/RESTsearch#saved.2Fsearches
@@ -104,6 +268,71 @@ Following is a sample request that can be handled by the accessSavedSearch opera
 </accessSavedSearch>
 ```
 
+
+**Sample Response**
+
+```xml
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:s="http://dev.splunk.com/ns/rest" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <title>savedsearch</title>
+  <id>https://localhost:8089/servicesNS/shevindi/splunkApp/saved/searches</id>
+  <updated>2018-12-18T12:53:15+05:30</updated>
+  <generator build="be11b2c46e23" version="7.2.1"/>
+  <author>
+    <name>Splunk</name>
+  </author>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_new" rel="create"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_reload" rel="_reload"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_acl" rel="_acl"/>
+  <opensearch:totalResults>21</opensearch:totalResults>
+  <opensearch:itemsPerPage>30</opensearch:itemsPerPage>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <s:messages/>
+  <entry>
+    <title>Histogram of delay in seconds</title>
+    <id>https://localhost:8089/servicesNS/nobody/splunkApp/saved/searches/Histogram%20of%20delay%20in%20seconds</id>
+    <updated>1970-01-01T05:30:00+05:30</updated>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/Histogram%20of%20delay%20in%20seconds" rel="alternate"/>
+    <author>
+      <name>nobody</name>
+    </author>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/Histogram%20of%20delay%20in%20seconds" rel="list"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/Histogram%20of%20delay%20in%20seconds/_reload" rel="_reload"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/Histogram%20of%20delay%20in%20seconds" rel="edit"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/Histogram%20of%20delay%20in%20seconds/disable" rel="disable"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/Histogram%20of%20delay%20in%20seconds/dispatch" rel="dispatch"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/Histogram%20of%20delay%20in%20seconds/embed" rel="embed"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/Histogram%20of%20delay%20in%20seconds/history" rel="history"/>
+    <content type="text/xml">
+      <s:dict>
+        <s:key name="qualifiedSearch">search index=sample | fields + delay, count | convert dur2sec(delay) | sort - delay | top delay limit=10</s:key>
+      </s:dict>
+    </content>
+  </entry>
+  <entry>
+      <title>Top recipients by mailer - area chart</title>
+      <id>https://localhost:8089/servicesNS/nobody/splunkApp/saved/searches/Top%20recipients%20by%20mailer%20-%20area%20chart</id>
+      <updated>1970-01-01T05:30:00+05:30</updated>
+      <link href="/servicesNS/nobody/splunkApp/saved/searches/Top%20recipients%20by%20mailer%20-%20area%20chart" rel="alternate"/>
+      <author>
+        <name>nobody</name>
+      </author>
+      <link href="/servicesNS/nobody/splunkApp/saved/searches/Top%20recipients%20by%20mailer%20-%20area%20chart" rel="list"/>
+      <link href="/servicesNS/nobody/splunkApp/saved/searches/Top%20recipients%20by%20mailer%20-%20area%20chart/_reload" rel="_reload"/>
+      <link href="/servicesNS/nobody/splunkApp/saved/searches/Top%20recipients%20by%20mailer%20-%20area%20chart" rel="edit"/>
+      <link href="/servicesNS/nobody/splunkApp/saved/searches/Top%20recipients%20by%20mailer%20-%20area%20chart/disable" rel="disable"/>
+      <link href="/servicesNS/nobody/splunkApp/saved/searches/Top%20recipients%20by%20mailer%20-%20area%20chart/dispatch" rel="dispatch"/>
+      <link href="/servicesNS/nobody/splunkApp/saved/searches/Top%20recipients%20by%20mailer%20-%20area%20chart/embed" rel="embed"/>
+      <link href="/servicesNS/nobody/splunkApp/saved/searches/Top%20recipients%20by%20mailer%20-%20area%20chart/history" rel="history"/>
+      <content type="text/xml">
+        <s:dict>
+          <s:key name="qualifiedSearch">search index=sample | timechart count(to) by mailer</s:key>
+        </s:dict>
+      </content>
+    </entry>
+    .......
+</feed>
+```
+
 **Related Splunk documentation**
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTREF/RESTsearch#saved.2Fsearches
 
@@ -138,10 +367,173 @@ Following is a sample request that can be handled by the updateSavedSearch opera
     <port>8089</port>
     <appName>splunkApp</appName>
     <appUserName>shevindi</appUserName>
-    <searchName>Mysearch</searchName>
+    <searchName>mysearch</searchName>
     <searchQuery>search index=_internal source=*/metrics.log</searchQuery>
 </updateSavedSearch>
 ```
+
+
+**Sample Response**
+
+```xml
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:s="http://dev.splunk.com/ns/rest" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <title>savedsearch</title>
+  <id>https://localhost:8089/servicesNS/shevindi/splunkApp/saved/searches</id>
+  <updated>2018-12-12T23:55:59+05:30</updated>
+  <generator build="be11b2c46e23" version="7.2.1"/>
+  <author>
+    <name>Splunk</name>
+  </author>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_new" rel="create"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_reload" rel="_reload"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_acl" rel="_acl"/>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:itemsPerPage>30</opensearch:itemsPerPage>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <s:messages/>
+  <entry>
+    <title>mysearch</title>
+    <id>https://localhost:8089/servicesNS/shevindi/splunkApp/saved/searches/mysearch</id>
+    <updated>2018-12-12T23:55:59+05:30</updated>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch" rel="alternate"/>
+    <author>
+      <name>shevindi</name>
+    </author>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch" rel="list"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/_reload" rel="_reload"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch" rel="edit"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch" rel="remove"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/move" rel="move"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/disable" rel="disable"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/dispatch" rel="dispatch"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/embed" rel="embed"/>
+    <link href="/servicesNS/shevindi/splunkApp/saved/searches/mysearch/history" rel="history"/>
+<!-- opensearch nodes elided for brevity. -->
+    <content type="text/xml">
+      <s:dict>
+        <s:key name="action.email">0</s:key>
+        <s:key name="action.email.auth_password"></s:key>
+        <s:key name="action.email.auth_username"></s:key>
+        <s:key name="action.email.bcc"></s:key>
+        <s:key name="action.email.cc"></s:key>
+        <s:key name="action.email.command"><![CDATA[$action.email.preprocess_results{default=""}$
+          | sendemail "server=$action.email.mailserver{default=localhost}$"
+          "use_ssl=$action.email.use_ssl{default=false}$"
+          "use_tls=$action.email.use_tls{default=false}$" "to=$action.email.to$"
+          "cc=$action.email.cc$" "bcc=$action.email.bcc$" "from=$action.email.from{default=splunk@localhost}$"
+          "subject=$action.email.subject{recurse=yes}$" "format=$action.email.format{default=csv}$"
+          "sssummary=Saved Search [$name$]: $counttype$($results.count$)" "sslink=$results.url$"
+          "ssquery=$search$" "ssname=$name$" "inline=$action.email.inline{default=False}$"
+          "sendresults=$action.email.sendresults{default=False}$" "sendpdf=$action.email.sendpdf{default=False}$"
+          "pdfview=$action.email.pdfview$" "searchid=$search_id$" "graceful=$graceful{default=True}$"
+          maxinputs="$action.email.maxresults{default=10000}$" maxtime="$action.email.maxtime{default=5m}$"]]>
+        </s:key>
+        <s:key name="action.email.format">html</s:key>
+        <s:key name="action.email.from">splunk</s:key>
+        <s:key name="action.email.hostname"></s:key>
+        <s:key name="action.email.inline">0</s:key>
+        <s:key name="action.email.mailserver">localhost</s:key>
+        <s:key name="action.email.maxresults">10000</s:key>
+        <s:key name="action.email.maxtime">5m</s:key>
+        <s:key name="action.email.pdfview"></s:key>
+        <s:key name="action.email.preprocess_results"></s:key>
+        <s:key name="action.email.reportPaperOrientation">portrait</s:key>
+        <s:key name="action.email.reportPaperSize">letter</s:key>
+        <s:key name="action.email.reportServerEnabled">1</s:key>
+        <s:key name="action.email.reportServerURL"></s:key>
+        <s:key name="action.email.sendpdf">0</s:key>
+        <s:key name="action.email.sendresults">0</s:key>
+        <s:key name="action.email.subject">Splunk Alert: $name$</s:key>
+        <s:key name="action.email.to"></s:key>
+        <s:key name="action.email.track_alert">1</s:key>
+        <s:key name="action.email.ttl">86400</s:key>
+        <s:key name="action.email.use_ssl">0</s:key>
+        <s:key name="action.email.use_tls">0</s:key>
+        <s:key name="action.populate_lookup">0</s:key>
+        <s:key name="action.populate_lookup.command">copyresults dest="$action.populate_lookup.dest$"  sid="$search_id$"</s:key>
+        <s:key name="action.populate_lookup.dest"></s:key>
+        <s:key name="action.populate_lookup.hostname"></s:key>
+        <s:key name="action.populate_lookup.maxresults">10000</s:key>
+        <s:key name="action.populate_lookup.maxtime">5m</s:key>
+        <s:key name="action.populate_lookup.track_alert">0</s:key>
+        <s:key name="action.populate_lookup.ttl">120</s:key>
+        <s:key name="action.rss">0</s:key>
+        <s:key name="action.rss.command">createrss "path=$name$.xml" "name=$name$" "link=$results.url$" "descr=Alert trigger:
+          $name$, results.count=$results.count$ " "count=30" "graceful=$graceful{default=1}$" maxtime="$action.rss.maxtime{default=1m}$"
+        </s:key>
+        <s:key name="action.rss.hostname"></s:key>
+        <s:key name="action.rss.maxresults">10000</s:key>
+        <s:key name="action.rss.maxtime">1m</s:key>
+        <s:key name="action.rss.track_alert">0</s:key>
+        <s:key name="action.rss.ttl">86400</s:key>
+        <s:key name="action.script">0</s:key>
+        <s:key name="action.script.command">runshellscript "$action.script.filename$" "$results.count$" "$search$" "$search$" "$name$"
+          "Saved Search [$name$] $counttype$($results.count$)" "$results.url$" "$deprecated_arg$" "$search_id$" "$results.file$"
+          maxtime="$action.script.maxtime{default=5m}$"
+        </s:key>
+        <s:key name="action.script.filename"></s:key>
+        <s:key name="action.script.hostname"></s:key>
+        <s:key name="action.script.maxresults">10000</s:key>
+        <s:key name="action.script.maxtime">5m</s:key>
+        <s:key name="action.script.track_alert">1</s:key>
+        <s:key name="action.script.ttl">600</s:key>
+        <s:key name="action.summary_index">0</s:key>
+        <s:key name="action.summary_index._name">summary</s:key>
+        <s:key name="action.summary_index.command"><![CDATA[summaryindex spool=t uselb=t addtime=t index="$action.summary_index._name{required=yes}$"
+          file="$name$_$#random$.stash_new" name="$name$" marker="$action.summary_index*{format=$KEY=\\\"$VAL\\\",
+          key_regex="action.summary_index.(?!(?:command|inline|maxresults|maxtime|ttl|track_alert|(?:_.*))$)(.*)"}$"]]>
+        </s:key>
+        <s:key name="action.summary_index.hostname"></s:key>
+        <s:key name="action.summary_index.inline">1</s:key>
+        <s:key name="action.summary_index.maxresults">10000</s:key>
+        <s:key name="action.summary_index.maxtime">5m</s:key>
+        <s:key name="action.summary_index.track_alert">0</s:key>
+        <s:key name="action.summary_index.ttl">120</s:key>
+        <s:key name="alert.digest_mode">1</s:key>
+        <s:key name="alert.expires">24h</s:key>
+        <s:key name="alert.severity">3</s:key>
+        <s:key name="alert.suppress"></s:key>
+        <s:key name="alert.suppress.fields"></s:key>
+        <s:key name="alert.suppress.period"></s:key>
+        <s:key name="alert.track">auto</s:key>
+        <s:key name="alert_comparator"></s:key>
+        <s:key name="alert_condition"></s:key>
+        <s:key name="alert_threshold"></s:key>
+        <s:key name="alert_type">always</s:key>
+        <s:key name="cron_schedule"></s:key>
+        <s:key name="description"></s:key>
+        <s:key name="disabled">0</s:key>
+        <s:key name="dispatch.buckets">0</s:key>
+        <s:key name="dispatch.earliest_time"></s:key>
+        <s:key name="dispatch.latest_time"></s:key>
+        <s:key name="dispatch.lookups">1</s:key>
+        <s:key name="dispatch.max_count">500000</s:key>
+        <s:key name="dispatch.max_time">0</s:key>
+        <s:key name="dispatch.reduce_freq">10</s:key>
+        <s:key name="dispatch.rt_backfill">0</s:key>
+        <s:key name="dispatch.spawn_process">1</s:key>
+        <s:key name="dispatch.time_format">%FT%T.%Q%:z</s:key>
+        <s:key name="dispatch.ttl">2p</s:key>
+        <s:key name="displayview"></s:key>
+        <!-- eai:acl elided -->
+        <s:key name="is_scheduled">0</s:key>
+        <s:key name="is_visible">1</s:key>
+        <s:key name="max_concurrent">1</s:key>
+        <s:key name="next_scheduled_time"></s:key>
+        <s:key name="qualifiedSearch">search  index=_internal source=*metrics.log</s:key>
+        <s:key name="realtime_schedule">1</s:key>
+        <s:key name="request.ui_dispatch_app"></s:key>
+        <s:key name="request.ui_dispatch_view"></s:key>
+        <s:key name="restart_on_searchpeer_add">1</s:key>
+        <s:key name="run_on_startup">0</s:key>
+        <s:key name="search">index=_internal source=*metrics.log</s:key>
+        <s:key name="vsid"></s:key>
+      </s:dict>
+    </content>
+  </entry>
+</feed>
+```
+
 **Related Splunk documentation**
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTREF/RESTsearch#saved.2Fsearches.2F.7Bname.7D
 
@@ -195,7 +587,7 @@ Following is a sample request that can be handled by the shareSavedSearch operat
     <port>8089</port>
     <appName>splunkApp</appName>
     <appUserName>shevindi</appUserName>
-    <searchName>Mysearch</searchName>
+    <searchName>mysearch</searchName>
     <enableChangePermission>true</enableChangePermission>
     <enableAppShare>true</enableAppShare>
     <enableGlobalShare>true</enableGlobalShare>
@@ -208,6 +600,75 @@ Following is a sample request that can be handled by the shareSavedSearch operat
     <resourceShareOption>app</resourceShareOption>
 </shareSavedSearch>
 ```
+
+
+**Sample Response**
+
+```xml
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:s="http://dev.splunk.com/ns/rest" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <title>savedsearch</title>
+  <id>https://localhost:8089/servicesNS/shevindi/splunkApp/saved/searches</id>
+  <updated>2018-12-13T11:34:21+05:30</updated>
+  <generator build="be11b2c46e23" version="7.2.1"/>
+  <author>
+    <name>Splunk</name>
+  </author>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_new" rel="create"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_reload" rel="_reload"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_acl" rel="_acl"/>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:itemsPerPage>30</opensearch:itemsPerPage>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <s:messages/>
+  <entry>
+    <title>mysearch2</title>
+    <id>https://localhost:8089/servicesNS/nobody/splunkApp/saved/searches/mysearch2</id>
+    <updated>2018-12-13T11:34:21+05:30</updated>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch" rel="alternate"/>
+    <author>
+      <name>navanjana</name>
+    </author>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch" rel="list"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch/_reload" rel="_reload"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch" rel="edit"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch" rel="remove"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch/move" rel="move"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch/disable" rel="disable"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch/dispatch" rel="dispatch"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch/embed" rel="embed"/>
+    <link href="/servicesNS/nobody/splunkApp/saved/searches/mysearch/history" rel="history"/>
+    <content type="text/xml">
+      <s:dict>
+        <s:key name="eai:acl">
+          <s:dict>
+            <s:key name="app">splunkApp</s:key>
+            <s:key name="can_change_perms">1</s:key>
+            <s:key name="can_list">1</s:key>
+            <s:key name="can_share_app">1</s:key>
+            <s:key name="can_share_global">1</s:key>
+            <s:key name="can_share_user">1</s:key>
+            <s:key name="can_write">1</s:key>
+            <s:key name="modifiable">1</s:key>
+            <s:key name="owner">navanjana</s:key>
+            <s:key name="perms">
+              <s:dict>
+                <s:key name="read">
+                  <s:list>
+                    <s:item>*</s:item>
+                  </s:list>
+                </s:key>
+              </s:dict>
+            </s:key>
+            <s:key name="removable">1</s:key>
+            <s:key name="sharing">app</s:key>
+          </s:dict>
+        </s:key>
+      </s:dict>
+    </content>
+  </entry>
+</feed>
+```
+
 **Related Splunk documentation**
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTTUT/RESTbasicexamples#Share_an_object_to_an_app.2C_modify_its_permissions.2C_and_edit_it
 
@@ -243,9 +704,171 @@ Following is a sample request that can be handled by the moveSavedSearch operati
     <port>8089</port>
     <appName>splunkApp</appName>
     <appUserName>shevindi</appUserName>
-    <searchName>Mysearch</searchName>
+    <searchName>mysearch</searchName>
     <appNameToMove>splunk</appNameToMove>
 </moveSavedSearch>
+```
+
+
+**Sample Response**
+
+```xml
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:s="http://dev.splunk.com/ns/rest" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <title>savedsearch</title>
+  <id>https://localhost:8089/servicesNS/nobody/splunkApp/saved/searches</id>
+  <updated>2018-12-13T12:04:02+05:30</updated>
+  <generator build="be11b2c46e23" version="7.2.1"/>
+  <author>
+    <name>Splunk</name>
+  </author>
+  <link href="/servicesNS/nobody/splunkApp/saved/searches/_new" rel="create"/>
+  <link href="/servicesNS/nobody/splunkApp/saved/searches/_reload" rel="_reload"/>
+  <link href="/servicesNS/nobody/splunkApp/saved/searches/_acl" rel="_acl"/>
+  <opensearch:totalResults>1</opensearch:totalResults>
+  <opensearch:itemsPerPage>30</opensearch:itemsPerPage>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <s:messages/>
+  <entry>
+    <title>mysearch</title>
+    <id>https://localhost:8089/servicesNS/nobody/splunk/saved/searches/mysearch2</id>
+    <updated>2018-12-13T11:34:21+05:30</updated>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch" rel="alternate"/>
+    <author>
+      <name>nobody</name>
+    </author>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch" rel="list"/>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch/_reload" rel="_reload"/>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch" rel="edit"/>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch" rel="remove"/>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch/move" rel="move"/>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch/disable" rel="disable"/>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch/dispatch" rel="dispatch"/>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch/embed" rel="embed"/>
+    <link href="/servicesNS/nobody/splunk/saved/searches/mysearch2/history" rel="history"/>
+    <!-- opensearch nodes elided for brevity. -->
+    <content type="text/xml">
+      <s:dict>
+        <s:key name="action.email">0</s:key>
+        <s:key name="action.email.auth_password"></s:key>
+        <s:key name="action.email.auth_username"></s:key>
+        <s:key name="action.email.bcc"></s:key>
+        <s:key name="action.email.cc"></s:key>
+        <s:key name="action.email.command"><![CDATA[$action.email.preprocess_results{default=""}$
+          | sendemail "server=$action.email.mailserver{default=localhost}$"
+          "use_ssl=$action.email.use_ssl{default=false}$"
+          "use_tls=$action.email.use_tls{default=false}$" "to=$action.email.to$"
+          "cc=$action.email.cc$" "bcc=$action.email.bcc$" "from=$action.email.from{default=splunk@localhost}$"
+          "subject=$action.email.subject{recurse=yes}$" "format=$action.email.format{default=csv}$"
+          "sssummary=Saved Search [$name$]: $counttype$($results.count$)" "sslink=$results.url$"
+          "ssquery=$search$" "ssname=$name$" "inline=$action.email.inline{default=False}$"
+          "sendresults=$action.email.sendresults{default=False}$" "sendpdf=$action.email.sendpdf{default=False}$"
+          "pdfview=$action.email.pdfview$" "searchid=$search_id$" "graceful=$graceful{default=True}$"
+          maxinputs="$action.email.maxresults{default=10000}$" maxtime="$action.email.maxtime{default=5m}$"]]>
+        </s:key>
+        <s:key name="action.email.format">html</s:key>
+        <s:key name="action.email.from">splunk</s:key>
+        <s:key name="action.email.hostname"></s:key>
+        <s:key name="action.email.inline">0</s:key>
+        <s:key name="action.email.mailserver">localhost</s:key>
+        <s:key name="action.email.maxresults">10000</s:key>
+        <s:key name="action.email.maxtime">5m</s:key>
+        <s:key name="action.email.pdfview"></s:key>
+        <s:key name="action.email.preprocess_results"></s:key>
+        <s:key name="action.email.reportPaperOrientation">portrait</s:key>
+        <s:key name="action.email.reportPaperSize">letter</s:key>
+        <s:key name="action.email.reportServerEnabled">1</s:key>
+        <s:key name="action.email.reportServerURL"></s:key>
+        <s:key name="action.email.sendpdf">0</s:key>
+        <s:key name="action.email.sendresults">0</s:key>
+        <s:key name="action.email.subject">Splunk Alert: $name$</s:key>
+        <s:key name="action.email.to"></s:key>
+        <s:key name="action.email.track_alert">1</s:key>
+        <s:key name="action.email.ttl">86400</s:key>
+        <s:key name="action.email.use_ssl">0</s:key>
+        <s:key name="action.email.use_tls">0</s:key>
+        <s:key name="action.populate_lookup">0</s:key>
+        <s:key name="action.populate_lookup.command">copyresults dest="$action.populate_lookup.dest$"  sid="$search_id$"</s:key>
+        <s:key name="action.populate_lookup.dest"></s:key>
+        <s:key name="action.populate_lookup.hostname"></s:key>
+        <s:key name="action.populate_lookup.maxresults">10000</s:key>
+        <s:key name="action.populate_lookup.maxtime">5m</s:key>
+        <s:key name="action.populate_lookup.track_alert">0</s:key>
+        <s:key name="action.populate_lookup.ttl">120</s:key>
+        <s:key name="action.rss">0</s:key>
+        <s:key name="action.rss.command">createrss "path=$name$.xml" "name=$name$" "link=$results.url$" "descr=Alert trigger:
+          $name$, results.count=$results.count$ " "count=30" "graceful=$graceful{default=1}$" maxtime="$action.rss.maxtime{default=1m}$"
+        </s:key>
+        <s:key name="action.rss.hostname"></s:key>
+        <s:key name="action.rss.maxresults">10000</s:key>
+        <s:key name="action.rss.maxtime">1m</s:key>
+        <s:key name="action.rss.track_alert">0</s:key>
+        <s:key name="action.rss.ttl">86400</s:key>
+        <s:key name="action.script">0</s:key>
+        <s:key name="action.script.command">runshellscript "$action.script.filename$" "$results.count$" "$search$" "$search$" "$name$"
+          "Saved Search [$name$] $counttype$($results.count$)" "$results.url$" "$deprecated_arg$" "$search_id$" "$results.file$"
+          maxtime="$action.script.maxtime{default=5m}$"
+        </s:key>
+        <s:key name="action.script.filename"></s:key>
+        <s:key name="action.script.hostname"></s:key>
+        <s:key name="action.script.maxresults">10000</s:key>
+        <s:key name="action.script.maxtime">5m</s:key>
+        <s:key name="action.script.track_alert">1</s:key>
+        <s:key name="action.script.ttl">600</s:key>
+        <s:key name="action.summary_index">0</s:key>
+        <s:key name="action.summary_index._name">summary</s:key>
+        <s:key name="action.summary_index.command"><![CDATA[summaryindex spool=t uselb=t addtime=t index="$action.summary_index._name{required=yes}$"
+          file="$name$_$#random$.stash_new" name="$name$" marker="$action.summary_index*{format=$KEY=\\\"$VAL\\\",
+          key_regex="action.summary_index.(?!(?:command|inline|maxresults|maxtime|ttl|track_alert|(?:_.*))$)(.*)"}$"]]>
+        </s:key>
+        <s:key name="action.summary_index.hostname"></s:key>
+        <s:key name="action.summary_index.inline">1</s:key>
+        <s:key name="action.summary_index.maxresults">10000</s:key>
+        <s:key name="action.summary_index.maxtime">5m</s:key>
+        <s:key name="action.summary_index.track_alert">0</s:key>
+        <s:key name="action.summary_index.ttl">120</s:key>
+        <s:key name="alert.digest_mode">1</s:key>
+        <s:key name="alert.expires">24h</s:key>
+        <s:key name="alert.severity">3</s:key>
+        <s:key name="alert.suppress"></s:key>
+        <s:key name="alert.suppress.fields"></s:key>
+        <s:key name="alert.suppress.period"></s:key>
+        <s:key name="alert.track">auto</s:key>
+        <s:key name="alert_comparator"></s:key>
+        <s:key name="alert_condition"></s:key>
+        <s:key name="alert_threshold"></s:key>
+        <s:key name="alert_type">always</s:key>
+        <s:key name="cron_schedule"></s:key>
+        <s:key name="description"></s:key>
+        <s:key name="disabled">0</s:key>
+        <s:key name="dispatch.buckets">0</s:key>
+        <s:key name="dispatch.earliest_time"></s:key>
+        <s:key name="dispatch.latest_time"></s:key>
+        <s:key name="dispatch.lookups">1</s:key>
+        <s:key name="dispatch.max_count">500000</s:key>
+        <s:key name="dispatch.max_time">0</s:key>
+        <s:key name="dispatch.reduce_freq">10</s:key>
+        <s:key name="dispatch.rt_backfill">0</s:key>
+        <s:key name="dispatch.spawn_process">1</s:key>
+        <s:key name="dispatch.time_format">%FT%T.%Q%:z</s:key>
+        <s:key name="dispatch.ttl">2p</s:key>
+        <s:key name="displayview"></s:key>
+        <!-- eai:acl elided -->
+        <s:key name="is_scheduled">0</s:key>
+        <s:key name="is_visible">1</s:key>
+        <s:key name="max_concurrent">1</s:key>
+        <s:key name="next_scheduled_time"></s:key>
+        <s:key name="qualifiedSearch">search  index=_internal source=*metrics.log</s:key>
+        <s:key name="realtime_schedule">1</s:key>
+        <s:key name="request.ui_dispatch_app"></s:key>
+        <s:key name="request.ui_dispatch_view"></s:key>
+        <s:key name="restart_on_searchpeer_add">1</s:key>
+        <s:key name="run_on_startup">0</s:key>
+        <s:key name="search">index=_internal source=*metrics.log</s:key>
+        <s:key name="vsid"></s:key>
+      </s:dict>
+    </content>
+  </entry>
+</feed>
 ```
 **Related Splunk documentation**
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTTUT/RESTbasicexamples#Move_an_object_to_a_different_app
@@ -281,6 +904,28 @@ Following is a sample request that can be handled by the shareSavedSearch operat
     <appUserName>shevindi</appUserName>
     <searchName>Mysearch</searchName>
 </deleteSavedSearch>
+```
+
+
+**Sample Response**
+
+```xml
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:s="http://dev.splunk.com/ns/rest" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <title>savedsearch</title>
+  <id>https://localhost:8089/servicesNS/shevindi/splunkApp/saved/searches</id>
+  <updated>2018-12-13T00:24:02+05:30</updated>
+  <generator build="be11b2c46e23" version="7.2.1"/>
+  <author>
+    <name>Splunk</name>
+  </author>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_new" rel="create"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_reload" rel="_reload"/>
+  <link href="/servicesNS/shevindi/splunkApp/saved/searches/_acl" rel="_acl"/>
+  <opensearch:totalResults>0</opensearch:totalResults>
+  <opensearch:itemsPerPage>30</opensearch:itemsPerPage>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <s:messages/>
+</feed>
 ```
 **Related Splunk documentation**
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTREF/RESTsearch#saved.2Fsearches.2F.7Bname.7D
