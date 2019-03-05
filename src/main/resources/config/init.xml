@@ -31,8 +31,7 @@
 
         <!-- Base64Encoding the username and password -->
         <property name="authorization"
-                  expression="fn:concat('Basic ', base64Encode(get-property('authenticationRawdata')))"
-                  type="STRING"/>
+                  expression="fn:concat('Basic ', base64Encode(get-property('authenticationRawdata')))" type="STRING"/>
         <header name="Authorization" expression="get-property('authorization')" scope="transport"/>
     </sequence>
 </template>
