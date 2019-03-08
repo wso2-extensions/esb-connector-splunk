@@ -1,0 +1,1 @@
+add_summary_to_metadata=&count=3&f=&field_list=sourcetype,source&offset=&output_mode&search=search index=_internal source=*/metrics.log&id=

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+   WSO2 Inc. licenses this file to you under the Apache License,
+   Version 2.0 (the "License"); you may not use this file except
+   in compliance with the License.
+   You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied. See the License for the
+   specific language governing permissions and limitations
+   under the License.
+-->
+<template xmlns="http://ws.apache.org/ns/synapse" name="getSearchResults">
+    <parameter name="addSummaryToMetadata" description="Set the value to 'true' to include field summary statistics in
+    the response. By default it is ‘false’."/>
+    <parameter name="resultCount" description="The maximum number of results to return"/>
+    <parameter name="searchId" description="String to specify the search ID "/>
+    <parameter name="fields" description="A field to return for the event set."/>
+    <parameter name="fieldList"
+               description="Specify a comma-separated list of the fields to return for the event set."/>
+    <parameter name="resultOffset" description="The first result (inclusive) from which to begin returning data."/>
+    <parameter name="outputFormat" description="Valid values: (atom | json | json_cols | json_rows | raw | xml).
+    Specifies the format for the returned output."/>
+    <parameter name="searchQuery" description="The search query"/>
+    <sequence>
+        <property name="uri.var.addSummaryToMetadata" expression="$func:addSummaryToMetadata"/>
+        <property name="uri.var.resultCount" expression="$func:resultCount"/>
+        <property name="uri.var.searchId" expression="$func:searchId"/>
+        <property name="uri.var.fields" expression="$func:fields"/>
+        <property name="uri.var.fieldList" expression="$func:fieldList"/>
+        <property name="uri.var.resultOffset" expression="$func:resultOffset"/>
+        <property name="uri.var.outputFormat" expression="$func:outputFormat"/>
+        <property name="uri.var.searchQuery" expression="$func:searchQuery"/>
+        <script language="js">
+            <![CDATA[
+                // Optional url param variables
+                var addSummaryToMetadata= mc.getProperty('uri.var.addSummaryToMetadata');
+                var resultCount  = mc.getProperty('uri.var.resultCount');
+                var field  = mc.getProperty('uri.var.field');
+                var fieldList = mc.getProperty('uri.var.fieldList');
+                var resultOffset = mc.getProperty('uri.var.resultOffset');
+                var outputFormat = mc.getProperty('uri.var.outputFormat');
+                var searchQuery = mc.getProperty('uri.var.searchQuery');
+                var urlParamString = '';
+
+                if (addSummaryToMetadata != null && addSummaryToMetadata != "") {
+                    urlParamString += '&add_summary_to_metadata=' + addSummaryToMetadata;
+                }
+                if (resultCount != null && resultCount != "") {
+                    urlParamString += '&count=' + resultCount;
+                }
+                if (field != null && field != "") {
+                    urlParamString += '&f=' + field;
+                }
+                if (fieldList != null && fieldList != "") {
+                    urlParamString += '&field_list=' + fieldList;
+                }
+                if (resultOffset != null && resultOffset != "") {
+                    urlParamString += '&offset=' + resultOffset;
+                }
+                if (outputFormat != null && outputFormat != "") {
+                    urlParamString += '&output_mode=' + outputFormat;
+                }
+                if (searchQuery != null && searchQuery != "") {
+                    urlParamString += '&search=' + searchQuery;
+                }
+                if(urlParamString != '') {
+                    urlParamString = '?' + urlParamString.toString().substring(1);
+                }
+                mc.setProperty('uri.var.urlParamString', urlParamString);
+            ]]>
+        </script>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="https://{uri.var.hostname}:{uri.var.port}/services/search/jobs/{uri.var.searchId}/results{+uri.var.urlParamString}"/>
+            </endpoint>
+        </call>
+    </sequence>
+</template>

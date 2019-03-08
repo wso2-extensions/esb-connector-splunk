@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+   WSO2 Inc. licenses this file to you under the Apache License,
+   Version 2.0 (the "License"); you may not use this file except
+   in compliance with the License.
+   You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied. See the License for the
+   specific language governing permissions and limitations
+   under the License.
+-->
+<component name="savedSearch" type="synapse/template" >
+    <subComponents>
+        <component name="createSavedSearch" >
+            <file>createSavedSearch.xml</file>
+            <description>Create a saved search for the user that is available from the app</description>
+        </component>
+        <component name="accessSavedSearch">
+            <file>accessSavedSearch.xml</file>
+            <description>Access saved search configurations that you have permission to view</description>
+        </component>
+        <component name="updateSavedSearch">
+            <file>updateSavedSearch.xml</file>
+            <description>Update a named saved search.</description>
+        </component>
+        <component name="deleteSavedSearch">
+            <file>deleteSavedSearch.xml</file>
+            <description>Delete a named saved search.</description>
+        </component>
+        <component name="shareSavedSearch">
+            <file>shareSavedSearch.xml</file>
+            <description>Share the saved search and change its permission.</description>
+        </component>
+        <component name="moveSavedSearch">
+            <file>moveSavedSearch.xml</file>
+            <description>
+                Make the saved search available for all users and change the context to a different app which was
+                previously available to all in the context of default app
+            </description>
+        </component>
+    </subComponents>
+</component>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+   WSO2 Inc. licenses this file to you under the Apache License,
+   Version 2.0 (the "License"); you may not use this file except
+   in compliance with the License.
+   You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied. See the License for the
+   specific language governing permissions and limitations
+   under the License.
+-->
+<template xmlns="http://ws.apache.org/ns/synapse" name="shareSavedSearch">
+    <parameter name="appName" description="The app context for the resource."/>
+    <parameter name="appUserName" description="Owner of the app"/>
+    <parameter name="searchName" description="Name for the search"/>
+    <parameter name="enableChangePermission"
+               description="Indicates if the active user can change permissions for this object. Defaults to true."/>
+    <parameter name="enableAppShare"
+               description="Indicates if the active user can change sharing to app level. Defaults to true"/>
+    <parameter name="enableGlobalShare"
+               description="Indicates if the active user can change sharing to system level. Defaults to true."/>
+    <parameter name="enableUserShare"
+               description="Indicates if the active user can change sharing to user level. Defaults to true."/>
+    <parameter name="enableEditPermission"
+               description="Indicates if the active user can edit this object. Defaults to true"/>
+    <parameter name="ownerName"
+               description="User name of resource owner. Defaults to the resource creator. Required for updating any
+               knowledge object ACL properties."/>
+    <parameter name="readPermissionProperties" description="Properties that indicate resource read permissions."/>
+    <parameter name="writePermissionProperties"
+               description="Properties that indicate write permissions of the resource."/>
+    <parameter name="isRemovable"
+               description="Indicates whether an admin or user with sufficient permissions can delete the entity."/>
+    <parameter name="resourceShareOption"
+               description="Indicates how the resource is shared. Required for updating any knowledge object
+               ACL properties."/>
+    <sequence>
+        <property name="uri.var.appName" expression="$func:appName"/>
+        <property name="uri.var.appUserName" expression="$func:appUserName"/>
+        <property name="uri.var.searchName" expression="$func:searchName"/>
+        <property name="uri.var.enableChangePermission" expression="$func:enableChangePermission"/>
+        <property name="uri.var.enableAppShare" expression="$func:enableAppShare"/>
+        <property name="uri.var.enableGlobalShare" expression="$func:enableGlobalShare"/>
+        <property name="uri.var.enableUserShare" expression="$func:enableUserShare"/>
+        <property name="uri.var.enableEditPermission" expression="$func:enableEditPermission"/>
+        <property name="ownerName" expression="$func:ownerName"/>
+        <property name="uri.var.readPermissionProperties" expression="$func:readPermissionProperties"/>
+        <property name="uri.var.writePermissionProperties" expression="$func:owritePermissionProperties"/>
+        <property name="uri.var.isRemovable" expression="$func:isRemovable"/>
+        <property name="resourceShareOption" expression="$func:resourceShareOption"/>
+        <script language="js">
+            <![CDATA[
+                // Optional url param variables
+                var  enableChangePermission= mc.getProperty('uri.var.enableChangePermission');
+                var enableAppShare  = mc.getProperty('uri.var.enableAppShare');
+                var enableGlobalShare  = mc.getProperty('uri.var.enableGlobalShare');
+                var enableUserShare  = mc.getProperty('uri.var.enableUserShare');
+                var enableEditPermission = mc.getProperty('uri.var.enableEditPermission');
+                var readPermissionProperties = mc.getProperty('uri.var.readPermissionProperties');
+                var writePermissionProperties = mc.getProperty('uri.var.writePermissionProperties');
+                var isRemovable = mc.getProperty('uri.var.isRemovable');
+
+                var uriParams = '';
+                if (enableChangePermission != null && enableChangePermission != "") {
+                    uriParams += 'can_change_perms=' + enableChangePermission + '&';
+                    enableChangePermission = 'can_change_perms=' + encodeURIComponent(enableChangePermission);
+                    mc.setProperty('uri.var.enableChangePermission', enableChangePermission)
+                }
+                if (enableAppShare != null && enableAppShare != "") {
+                    uriParams += 'can_share_app=' + enableAppShare + '&';
+                    enableAppShare = 'can_share_app=' + encodeURIComponent(enableAppShare);
+                    mc.setProperty('uri.var.enableAppShare', enableAppShare)
+                }
+                if (enableGlobalShare != null && enableGlobalShare != "") {
+                    uriParams += 'can_share_global=' + enableGlobalShare + '&';
+                    enableGlobalShare = 'can_share_global=' + encodeURIComponent(enableGlobalShare);
+                    mc.setProperty('uri.var.enableGlobalShare', enableGlobalShare)
+                }
+                if (enableUserShare != null && enableUserShare != "") {
+                    uriParams += 'can_share_user=' + enableUserShare + '&';
+                    enableUserShare = 'can_share_user=' + encodeURIComponent(enableUserShare);
+                    mc.setProperty('uri.var.enableUserShare', enableUserShare)
+                }
+                if (enableEditPermission != null && enableEditPermission != "") {
+                    uriParams += 'can_write=' + enableEditPermission + '&';
+                    enableEditPermission = 'can_write=' + encodeURIComponent(enableEditPermission);
+                    mc.setProperty('uri.var.enableEditPermission', enableEditPermission)
+                }
+                if (readPermissionProperties != null && readPermissionProperties != "") {
+                    uriParams += 'perms.read=' + readPermissionProperties + '&';
+                    readPermissionProperties = 'perms.read=' + encodeURIComponent(readPermissionProperties);
+                    mc.setProperty('uri.var.readPermissionProperties', readPermissionProperties)
+                }
+                if (writePermissionProperties != null && writePermissionProperties != "") {
+                    uriParams += 'perms.write=' + writePermissionProperties + '&';
+                    writePermissionProperties = 'perms.write=' + (writePermissionProperties);
+                    mc.setProperty('uri.var.writePermissionProperties', writePermissionProperties)
+                }
+                if (isRemovable != null && isRemovable != "") {
+                    uriParams += 'removable=' + isRemovable + '&';
+                    isRemovable = 'removable=' + encodeURIComponent(isRemovable);
+                    mc.setProperty('uri.var.isRemovable', isRemovable)
+                }
+
+                if(uriParams != '') {
+                    mc.setProperty('uri.var.uriParams', uriParams.toString().substring(0,
+                    uriParams.toString().lastIndexOf("&")));
+                }
+            ]]>
+        </script>
+        <payloadFactory media-type="json">
+            <format>
+                {
+                "owner":"$1",
+                "sharing":"$2"
+                }
+            </format>
+            <args>
+                <arg evaluator="xml" expression="get-property('ownerName')" literal="false"
+                     xmlns="http://org.apache.synapse/xsd"/>
+                <arg evaluator="xml" expression="get-property('resourceShareOption')" literal="false"
+                     xmlns="http://org.apache.synapse/xsd"/>
+            </args>
+        </payloadFactory>
+        <property name="messageType" scope="axis2" type="STRING" value="application/x-www-form-urlencoded"/>
+        <call>
+            <endpoint>
+                <http method="POST"
+                      uri-template="https://{uri.var.hostname}:{uri.var.port}/servicesNS/{uri.var.appUserName}/{uri.var.appName}/saved/searches/{uri.var.searchName}/acl?{+uri.var.uriParams}"/>
+            </endpoint>
+        </call>
+    </sequence>
+</template>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ ~  Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ ~
+ ~  WSO2 Inc. licenses this file to you under the Apache License,
+ ~  Version 2.0 (the "License"); you may not use this file except
+ ~  in compliance with the License.
+ ~  You may obtain a copy of the License at
+ ~
+ ~    http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~  Unless required by applicable law or agreed to in writing,
+ ~  software distributed under the License is distributed on an
+ ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ ~  KIND, either express or implied.  See the License for the
+ ~  specific language governing permissions and limitations
+ ~  under the License.
+-->
+<proxy xmlns="http://ws.apache.org/ns/synapse" name="splunk"
+       transports="https,http" statistics="disable" trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="username" expression="//username/text()"/>
+            <property name="password" expression="//password/text()"/>
+            <property name="hostname" expression="//hostname/text()"/>
+            <property name="port" expression="//port/text()"/>
+            <property name="appUserName" expression="//appUserName/text()"/>
+            <property name="appName" expression="//appName/text()"/>
+            <property name="searchQuery" expression="//searchQuery/text()"/>
+            <property name="searchName" expression="//searchName/text()"/>
+            <property name="earliestTime" expression="//earliestTime/text()"/>
+            <property name="latestTime" expression="//latestTime/text()"/>
+            <property name="listDefaultAction" expression="//listDefaultAction/node()"/>
+            <property name="orphanField" expression="//orphanField/node()"/>
+            <property name="appNameToMove" expression="//appNameToMove/text()"/>
+            <property name="enableChangePermission" expression="//enableChangePermission/text()"/>
+            <property name="enableAppShare" expression="//enableAppShare/text()"/>
+            <property name="enableGlobalShare" expression="//enableGlobalShare/text()"/>
+            <property name="enableUserShare" expression="//enableUserShare/text()"/>
+            <property name="enableEditPermission" expression="//enableEditPermission/text()"/>
+            <property name="ownerName" expression="//ownerName/text()"/>
+            <property name="readPermissionProperties" expression="//readPermissionProperties/text()"/>
+            <property name="writePermissionProperties" expression="//writePermissionProperties/text()"/>
+            <property name="isRemovable" expression="//isRemovable/text()"/>
+            <property name="resourceShareOption" expression="//resourceShareOption/text()"/>
+            <property name="adhocSearchLevel" expression="//adhocSearchLevel/text()"/>
+            <property name="searchId" expression="//searchId/text()"/>
+            <property name="maxCount" expression="/maxCount/text()"/>
+            <property name="requiredFields" expression="//requiredFields/text()"/>
+            <property name="bucketStatus" expression="//bucketStatus/text()"/>
+            <property name="searchMode" expression="//searchMode/text()"/>
+            <property expression="//addSummaryToMetadata/text()" name="addSummaryToMetadata"/>
+            <property expression="//resultCount/text()" name="resultCount"/>
+            <property expression="//fields/text()" name="fields"/>
+            <property expression="//fieldList/text()" name="fieldList"/>
+            <property expression="//resultOffset/text()" name="resultOffset"/>
+            <property expression="//outputFormat/text()" name="outputFormat"/>
+            <property expression="//configFileName/text()" name="configFileName"/>
+            <property expression="//stanzaName/text()" name="stanzaName"/>
+            <property expression="//dataFields/text()" name="dataFields"/>
+            <splunk.init>
+                <username>{$ctx:username}</username>
+                <password>{$ctx:password}</password>
+                <hostname>{$ctx:hostname}</hostname>
+                <port>{$ctx:port}</port>
+            </splunk.init>
+            <switch source="get-property('transport', 'Action')">
+                <case regex="urn:createSavedSearch">
+                    <splunk.createSavedSearch>
+                        <appName>{$ctx:appName}</appName>
+                        <appUserName>{$ctx:appUserName}</appUserName>
+                        <searchName>{$ctx:searchName}</searchName>
+                        <searchQuery>{$ctx:searchQuery}</searchQuery>
+                    </splunk.createSavedSearch>
+                </case>
+                <case regex="urn:accessSavedSearch">
+                    <splunk.accessSavedSearch>
+                        <appName>{$ctx:appName}</appName>
+                        <appUserName>{$ctx:appUserName}</appUserName>
+                        <earliestTime>{$ctx:earliestTime}</earliestTime>
+                        <latestTime>{$ctx:latestTime}</latestTime>
+                        <listDefaultAction>{$ctx:listDefaultAction}</listDefaultAction>
+                        <orphanField>{$ctx:orphanField}</orphanField>
+                    </splunk.accessSavedSearch>
+                </case>
+                <case regex="urn:updateSavedSearch">
+                    <splunk.updateSavedSearch>
+                        <appName>{$ctx:appName}</appName>
+                        <appUserName>{$ctx:appUserName}</appUserName>
+                        <searchName>{$ctx:searchName}</searchName>
+                        <searchQuery>{$ctx:searchQuery}</searchQuery>
+                    </splunk.updateSavedSearch>
+                </case>
+                <case regex="urn:deleteSavedSearch">
+                    <splunk.deleteSavedSearch>
+                        <appName>{$ctx:appName}</appName>
+                        <appUserName>{$ctx:appUserName}</appUserName>
+                        <searchName>{$ctx:searchName}</searchName>
+                    </splunk.deleteSavedSearch>
+                </case>
+                <case regex="urn:moveSavedSearch">
+                    <splunk.moveSavedSearch>
+                        <appName>{$ctx:appName}</appName>
+                        <appUserName>{$ctx:appUserName}</appUserName>
+                        <searchName>{$ctx:searchName}</searchName>
+                        <appNameToMove>{$ctx:appNameToMove}</appNameToMove>
+                    </splunk.moveSavedSearch>
+                </case>
+                <case regex="urn:shareSavedSearch">
+                    <splunk.shareSavedSearch>
+                        <appName>{$ctx:appName}</appName>
+                        <appUserName>{$ctx:appUserName}</appUserName>
+                        <searchName>{$ctx:searchName}</searchName>
+                        <enableChangePermission>{$ctx:enableChangePermission}</enableChangePermission>
+                        <enableAppShare>{$ctx:enableAppShare}</enableAppShare>
+                        <enableGlobalShare>{$ctx:enableGlobalShare}</enableGlobalShare>
+                        <enableUserShare>{$ctx:enableUserShare}</enableUserShare>
+                        <enableEditPermission>{$ctx:enableEditPermission}</enableEditPermission>
+                        <ownerName>{$ctx:ownerName}</ownerName>
+                        <readPermissionProperties>{$ctx:readPermissionProperties}</readPermissionProperties>
+                        <writePermissionProperties>{$ctx:readPermissionProperties}</writePermissionProperties>
+                        <isRemovable>{$ctx:isRemovable}</isRemovable>
+                        <resourceShareOption>{$ctx:resourceShareOption}</resourceShareOption>
+                    </splunk.shareSavedSearch>
+                </case>
+                <case regex="urn:createSearchJob">
+                    <splunk.createSearchJob>
+                        <searchQuery>{$ctx:searchQuery}</searchQuery>
+                        <adhocSearchLevel>{$ctx:adhocSearchLevel}</adhocSearchLevel>
+                        <searchId>{$ctx:searchId}</searchId>
+                        <maxCount>{$ctx:maxCount}</maxCount>
+                        <requiredFields>{$ctx:requiredFields}</requiredFields>
+                        <bucketStatus>{$ctx:bucketStatus}</bucketStatus>
+                        <searchMode>{$ctx:searchMode}</searchMode>
+                    </splunk.createSearchJob>
+                </case>
+                <case regex="urn:accessSearchJob">
+                    <splunk.accessSearchJob>
+                        <searchId>{$ctx:searchId}</searchId>
+                    </splunk.accessSearchJob>
+                </case>
+                <case regex="urn:getSearchResults">
+                    <splunk.getSearchResults>
+                        <searchQuery>{$ctx:searchQuery}</searchQuery>
+                        <addSummaryToMetadata>{$ctx:addSummaryToMetadata}</addSummaryToMetadata>
+                        <searchId>{$ctx:searchId}</searchId>
+                        <resultCount>{$ctx:resultCount}</resultCount>
+                        <fields>{$ctx:fields}</fields>
+                        <fieldList>{$ctx:fieldList}</fieldList>
+                        <resultOffset>{$ctx:resultOffset}</resultOffset>
+                        <outputFormat>{$ctx:outputFormat}</outputFormat>
+                    </splunk.getSearchResults>
+                </case>
+                <case regex="urn:addStanza">
+                    <splunk.addStanza>
+                        <appName>{$ctx:appName}</appName>
+                        <configFileName>{$ctx:configFileName}</configFileName>
+                        <stanzaName>{$ctx:stanzaName}</stanzaName>
+                        <dataFields>{$ctx:dataFields}</dataFields>
+                    </splunk.addStanza>
+                </case>
+                <case regex="urn:updateStanza">
+                    <splunk.updateStanza>
+                        <appName>{$ctx:appName}</appName>
+                        <configFileName>{$ctx:configFileName}</configFileName>
+                        <stanzaName>{$ctx:stanzaName}</stanzaName>
+                        <dataFields>{$ctx:dataFields}</dataFields>
+                    </splunk.updateStanza>
+                </case>
+                <case regex="urn:getStanza">
+                    <splunk.getStanza>
+                        <appName>{$ctx:appName}</appName>
+                        <configFileName>{$ctx:configFileName}</configFileName>
+                    </splunk.getStanza>
+                </case>
+                <case regex="urn:deleteStanza">
+                    <splunk.deleteStanza>
+                        <appName>{$ctx:appName}</appName>
+                        <configFileName>{$ctx:configFileName}</configFileName>
+                        <stanzaName>{$ctx:stanzaName}</stanzaName>
+                    </splunk.deleteStanza>
+                </case>
+                <case regex="urn:createConfigFile">
+                    <splunk.createConfigFile>
+                        <appName>{$ctx:appName}</appName>
+                        <configFileName>{$ctx:configFileName}</configFileName>
+                    </splunk.createConfigFile>
+                </case>
+                <case regex="urn:getAppConfigFiles">
+                    <splunk.getAppConfigFiles>
+                        <appName>{$ctx:appName}</appName>
+                    </splunk.getAppConfigFiles>
+                </case>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <send/>
+    </target>
+    <description/>
+</proxy>

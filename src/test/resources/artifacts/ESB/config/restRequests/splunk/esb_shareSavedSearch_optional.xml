@@ -1,0 +1,19 @@
+<shareSavedSearch>
+    <username>%s(username)</username>
+    <password>%s(password)</password>
+    <hostname>%s(hostname)</hostname>
+    <port>%s(port)</port>
+    <appName>%s(appName)</appName>
+    <appUserName>%s(appUserName)</appUserName>
+    <searchName>%s(searchName1)</searchName>
+    <enableChangePermission></enableChangePermission>
+    <enableAppShare></enableAppShare>
+    <enableGlobalShare></enableGlobalShare>
+    <enableUserShare></enableUserShare>
+    <enableEditPermission></enableEditPermission>
+    <ownerName>%s(ownerName)</ownerName>
+    <readPermissionProperties>%s(readPermissionProperties)</readPermissionProperties>
+    <writePermissionProperties></writePermissionProperties>
+    <isRemovable>%s(isRemovable)</isRemovable>
+    <resourceShareOption>%s(resourceShareOption)</resourceShareOption>
+</shareSavedSearch>

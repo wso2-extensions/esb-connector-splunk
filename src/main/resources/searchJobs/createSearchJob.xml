@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+
+   WSO2 Inc. licenses this file to you under the Apache License,
+   Version 2.0 (the "License"); you may not use this file except
+   in compliance with the License.
+   You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied. See the License for the
+   specific language governing permissions and limitations
+   under the License.
+-->
+<template xmlns="http://ws.apache.org/ns/synapse" name="createSearchJob">
+    <parameter name="searchQuery" description="The search query in the format 'search *'"/>
+    <parameter name="adhocSearchLevel" description="Use one of the following search modes.verbose,fast,smart"/>
+    <parameter name="searchId" description="Optional string to specify the search ID "/>
+    <parameter name="maxCount" description="The number of events that can be accessible in any given status bucket."/>
+    <parameter name="requiredFields" description="Adds a required field to the search."/>
+    <parameter name="bucketStatus"
+               description=" The most status buckets to generate.0 indicates to not generate timeline information."/>
+    <parameter name="searchMode" description="Valid values: (normal | realtime)"/>
+    <sequence>
+        <property name="searchQuery" expression="$func:searchQuery"/>
+        <property name="uri.var.adhocSearchLevel" expression="$func:adhocSearchLevel"/>
+        <property name="uri.var.searchId" expression="$func:searchId"/>
+        <property name="uri.var.maxCount" expression="$func:maxCount"/>
+        <property name="uri.var.requiredFields" expression="$func:requiredFields"/>
+        <property name="uri.var.bucketStatus" expression="$func:bucketStatus"/>
+        <property name="uri.var.searchMode" expression="$func:searchMode"/>
+        <script language="js">
+            <![CDATA[
+                // Optional url param variables
+                var adhocSearchLevel = mc.getProperty('uri.var.adhocSearchLevel');
+                var searchId  = mc.getProperty('uri.var.searchId');
+                var maxCount  = mc.getProperty('uri.var.maxCount');
+                var requiredFields = mc.getProperty('uri.var.requiredFields');
+                var bucketStatus = mc.getProperty('uri.var.bucketStatus');
+                var searchMode = mc.getProperty('uri.var.searchMode');
+
+                var uriParams = '';
+                if (adhocSearchLevel != null && adhocSearchLevel != "") {
+                    uriParams += 'adhoc_search_level=' + adhocSearchLevel + '&';
+                    adhocSearchLevel = 'adhoc_search_level=' + encodeURIComponent(adhocSearchLevel);
+                    mc.setProperty('uri.var.adhocSearchLevel', adhocSearchLevel)
+                }
+                if (searchId  != null && searchId != "") {
+                    uriParams += 'id=' + searchId + '&';
+                    searchId = 'id=' + encodeURIComponent(searchId);
+                    mc.setProperty('uri.var.searchId', searchId)
+                }
+                if (maxCount != null && maxCount != "") {
+                    uriParams += 'max_count=' + maxCount + '&';
+                    maxCount = 'max_count=' + encodeURIComponent(maxCount);
+                    mc.setProperty('uri.var.maxCount', maxCount)
+                }
+                if (requiredFields != null && requiredFields != "") {
+                    uriParams += 'rf=' + requiredFields + '&';
+                    requiredFields = 'rf=' + encodeURIComponent(requiredFields);
+                    mc.setProperty('uri.var.requiredFields', requiredFields)
+                }
+                if (bucketStatus != null && bucketStatus != "") {
+                    uriParams += 'status_buckets=' + bucketStatus + '&';
+                    bucketStatus = 'status_buckets=' + encodeURIComponent(bucketStatus);
+                    mc.setProperty('uri.var.bucketStatus', bucketStatus)
+                }
+                if (searchMode != null && searchMode != "") {
+                    uriParams += 'search_mode=' + searchMode + '&';
+                    searchMode = 'search_mode=' + encodeURIComponent(searchMode);
+                    mc.setProperty('uri.var.searchMode', searchMode)
+                }
+                if(uriParams != '') {
+                    mc.setProperty('uri.var.uriParams',
+                    uriParams.toString().substring(0,uriParams.toString().lastIndexOf("&")));
+                }
+            ]]>
+        </script>
+        <payloadFactory media-type="json">
+            <format>
+                {
+                "search":"$1"
+                }
+            </format>
+            <args>
+                <arg evaluator="xml" expression="get-property('searchQuery')" literal="false"
+                     xmlns="http://org.apache.synapse/xsd"/>
+            </args>
+        </payloadFactory>
+        <property name="messageType" scope="axis2" type="STRING" value="application/x-www-form-urlencoded"/>
+        <call>
+            <endpoint>
+                <http method="POST"
+                      uri-template="https://{uri.var.hostname}:{uri.var.port}/services/search/jobs?{+uri.var.uriParams}"/>
+            </endpoint>
+        </call>
+    </sequence>
+</template>
