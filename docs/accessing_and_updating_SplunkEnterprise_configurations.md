@@ -20,7 +20,7 @@ For a sample proxy service that illustrates how to work with configuration files
 
 This section provides more details on each of the operations.
 
-#### Adding a stanza
+#### Add a stanza
 The addStanza operation adds a stanza to a specific configuration file
 
 **addStanza**
@@ -138,7 +138,7 @@ Following is a sample request that can be handled by the addStanza operation.
 **Related Splunk documentation**
 https://docs.splAunk.com/Documentation/Splunk/7.2.1/RESTTUT/RESTconfigurations#Updating_Configuration_Files
 
-####  Updating a stanza
+####  Update a stanza
 
 The updateStanza operation allows you to update or add property to a stanza in a specific configuration file.
 

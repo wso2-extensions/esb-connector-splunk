@@ -10,14 +10,14 @@ For a sample proxy service that illustrates how to work with searches, see [Samp
 | Operation        | Description |
 | ------------- |-------------|
 | [createSearchJob](#create-a-search-job)    | Start a new search. |
-| [accessSearchJob](#access-a-searche-job)      | Access the information of the {search_id} search job. |
+| [accessSearchJob](#access-a-search-job)      | Access the information of the {search_id} search job. |
 | [getSearchResults](#get-search-results)      | Retrieve your search results. |
 
 ### Operation details
 
 This section provides more details on each of the operations.
 
-#### Creating a search job
+#### Create a search job
 The createSearchjob operation starts a new search.
 
 **createSearchJob**
@@ -74,7 +74,7 @@ Following is a sample request that can be handled by the createSearchJob operati
 **Related Splunk documentation**
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTTUT/RESTsearches
 
-####  Accessing a search job
+####  Access a search job
 
 The accessSearchJob operation allows you to access the information of the specific search job
 **accessSearchJob**
