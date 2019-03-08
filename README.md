@@ -7,7 +7,7 @@ It allows you to access the [Splunk Enterprise REST API ](https://docs.splunk.co
 
 | Connector version | Supported Splunk API version | Supported WSO2 ESB/EI version |
 | ------------- | ------------- | ------------- |
-| [1.0.0](https://github.com/wso2-extensions/esb-connector-splunk/releases/tag/org.wso2.carbon.connector.splunk-1.0.0) | V7.2.3 |  EI 6.4.0    |
+| [1.0.0](https://github.com/wso2-extensions/esb-connector-splunk/releases/tag/org.wso2.carbon.esb.connector.splunk-1.0.0) | V7.2.3 |  EI 6.4.0    |
 
 ## Getting started
 

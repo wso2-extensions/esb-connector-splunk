@@ -20,7 +20,7 @@ For a sample proxy service that illustrates how to work with saved searches, see
 
 This section provides more details on each of the operations.
 
-#### Creating a saved search
+#### Create a saved search
 The createSavedSearch operation creates a  saved search for the user that is available from the app.
 
 **createSavedSearch**
@@ -224,7 +224,7 @@ Following is a sample request that can be handled by the createSavedSearch opera
 **Related Splunk documentation**
 http://docs.splunk.com/Documentation/Splunk/7.2.1/RESTREF/RESTsearch#saved.2Fsearches
 
-####  Accessing saved searches
+####  Access saved searches
 
 The accessSavedSearch operation allows you to access saved search configurations that you have permission to view.For an admin user, this include other user’s private saved searches. For a non admin user, you retrieve only saved searches that you have permission to view.
 
@@ -336,7 +336,7 @@ Following is a sample request that can be handled by the accessSavedSearch opera
 **Related Splunk documentation**
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTREF/RESTsearch#saved.2Fsearches
 
-####  Update saved search
+####  Update a saved search
 
 The updateSavedSearch operation update a named saved search.User can change or edit a saved search since by default a saved search is private to user.
 
@@ -538,7 +538,7 @@ Following is a sample request that can be handled by the updateSavedSearch opera
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTREF/RESTsearch#saved.2Fsearches.2F.7Bname.7D
 
 
-####  Share saved search
+####  Share a saved search
 
 The shareSavedSearch operation share the saved search and change its permission.
 
@@ -673,7 +673,7 @@ Following is a sample request that can be handled by the shareSavedSearch operat
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTTUT/RESTbasicexamples#Share_an_object_to_an_app.2C_modify_its_permissions.2C_and_edit_it
 
 
-####  Move saved search
+####  Move a saved search
 
 The moveSavedSearch operation make the saved search available for all users and change the context to a different app which was previously available to all in the context of default app.
 
@@ -873,7 +873,7 @@ Following is a sample request that can be handled by the moveSavedSearch operati
 **Related Splunk documentation**
 https://docs.splunk.com/Documentation/Splunk/7.2.1/RESTTUT/RESTbasicexamples#Move_an_object_to_a_different_app
 
-####  Delete saved search
+####  Delete a saved search
 
 The deleteSavedSearch operation delete a saved search.
 
