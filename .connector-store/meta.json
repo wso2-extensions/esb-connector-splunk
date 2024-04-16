@@ -1,0 +1,12 @@
+{
+    "name": "Splunk",
+    "owner": "WSO2",
+    "category": "Other",
+    "documentationUrl": "https://github.com/wso2-extensions/esb-connector-splunk/blob/release-1.0.0/README.md",
+    "description": "The Splunk Connector allows you for searching, monitoring, and analyzing machine-generated big data. It allows you to access the Splunk Enterprise REST API through WSO2 Enterprise Integrator (WSO2 EI).",
+    "status": "Active",
+    "labels": [
+        "splunk"
+    ],
+    "releases": []
+}
